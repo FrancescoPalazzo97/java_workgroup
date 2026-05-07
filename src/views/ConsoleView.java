@@ -1,6 +1,7 @@
 package views;
 
 import models.observers.Observer;
+import models.orders.Ordine;
 
 public class ConsoleView implements Observer {
 
@@ -10,7 +11,7 @@ public class ConsoleView implements Observer {
     }
 
     @Override
-    public void update() {
-        System.out.println("Stato ordine aggiornato");
+    public void update(Ordine ordineCorrente) {
+        System.out.println(ordineCorrente.getRiepilogoOrdine());
     }
 }

@@ -2,20 +2,21 @@ package models.orders;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import models.Bevanda;
 import models.observers.Observer;
 
 public class GestoreOrdini implements Subject {
     private static GestoreOrdini instance;
 
-    private Bevanda bevandaCorrente;
-    private List<String> storicoOrdini;
+    private int prossimoNumero;
+    private Ordine ordineCorrente;
+    private List<Ordine> storicoOrdini;
     private List<Observer> observers;
 
     private GestoreOrdini() {
+        this.prossimoNumero = 1;
         storicoOrdini = new ArrayList<>();
         observers = new ArrayList<>();
+        this.ordineCorrente = new Ordine(prossimoNumero++);
     }
 
     public static GestoreOrdini getInstance() {
@@ -26,46 +27,22 @@ public class GestoreOrdini implements Subject {
         return instance;
     }
 
-    public void aggiornaBevandaCorrente(Bevanda bevanda) {
-        this.bevandaCorrente = bevanda;
-        notifyObserver();
+    public Ordine getOrdineCorrente() {
+        return ordineCorrente;
     }
 
-    public Bevanda getBevandaCorrente() {
-        return bevandaCorrente;
+    public List<Ordine> getStoricoOrdini() {
+        return this.storicoOrdini;
     }
 
-    public boolean hasBevandaCorrente() {
-        return bevandaCorrente != null;
-    }
+    public Ordine confermaOrdineCorrente() {
+        ordineCorrente.conferma();
+        storicoOrdini.add(ordineCorrente);
+        notifyObserver(ordineCorrente);
 
-    public List<String> getStoricoOrdini() {
-        return new ArrayList<>(storicoOrdini);
-    }
-
-    public String getRiepilogoBevandaCorrente() {
-        if (!hasBevandaCorrente()) {
-            return "Nessuna bevanda corrente!";
-        }
-
-        return creaRiepilogo(bevandaCorrente);
-    }
-
-    public void confermaOrdine() {
-        if (!hasBevandaCorrente()) {
-            return;
-        }
-
-        storicoOrdini.add(creaRiepilogo(bevandaCorrente));
-        bevandaCorrente = null;
-        notifyObserver();
-    }
-
-    private String creaRiepilogo(Bevanda bevanda) {
-        return bevanda.getDescrizione()
-                + " - Totale: "
-                + String.format("%.2f", bevanda.getCosto())
-                + " euro";
+        Ordine confermato = ordineCorrente;
+        ordineCorrente = new Ordine(prossimoNumero++);
+        return confermato;
     }
 
     public void addObserver(Observer o) {
@@ -78,9 +55,9 @@ public class GestoreOrdini implements Subject {
     }
 
     @Override
-    public void notifyObserver() {
+    public void notifyObserver(Ordine ordineCorrente) {
         for (Observer o : observers) {
-            o.update();
+            o.update(ordineCorrente);
         }
     }
 

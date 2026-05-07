@@ -8,30 +8,35 @@ import models.Bevanda;
 public class Ordine {
     private int numeroOrdine;
     private List<Bevanda> bevande;
+    private boolean confermato;
 
     public Ordine(int numeroOrdine) {
         this.numeroOrdine = numeroOrdine;
         this.bevande = new ArrayList<>();
+        this.confermato = false;
     }
 
     public int getNumeroOrdine() {
         return this.numeroOrdine;
     }
 
-    public void setNumeroOrdine(int numeroOrdine) {
-        this.numeroOrdine = numeroOrdine;
-    }
-
     public List<Bevanda> getBevande() {
         return this.bevande;
     }
 
-    public void setBevande(List<Bevanda> bevande) {
-        this.bevande = bevande;
+    public boolean isConfermato() {
+        return confermato;
     }
 
-    public void aggiungiBevande(Bevanda bevanda) {
+    public void aggiungiBevanda(Bevanda bevanda) {
         bevande.add(bevanda);
+    }
+
+    public void conferma() {
+        if (bevande.isEmpty()) {
+            return;
+        }
+        confermato = true;
     }
 
     public float getTotaleOrdine() {
