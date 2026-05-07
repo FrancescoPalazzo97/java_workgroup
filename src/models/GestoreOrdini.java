@@ -6,7 +6,7 @@ import java.util.List;
 import observer.Observer;
 import observer.Subject;
 
-public class GestoreOrdini implements Subject{
+public class GestoreOrdini implements Subject {
     private static GestoreOrdini instance;
 
     private Bevanda bevandaCorrente;
@@ -37,16 +37,39 @@ public class GestoreOrdini implements Subject{
         return bevandaCorrente;
     }
 
-    public void confermaOrdine() {
-        String riepilogo = bevandaCorrente.getDescrizione()
-                + " - Totale: "
-                + bevandaCorrente.getCosto();
+    public boolean hasBevandaCorrente() {
+        return bevandaCorrente != null;
+    }
 
-        storicoOrdini.add(riepilogo);
+    public List<String> getStoricoOrdini() {
+        return new ArrayList<>(storicoOrdini);
+    }
+
+    public String getRiepilogoBevandaCorrente() {
+        if (!hasBevandaCorrente()) {
+            return "Nessuna bevanda correte!";
+        }
+
+        return creaRiepilogo(bevandaCorrente);
+    }
+
+    public void confermaOrdine() {
+        if (!hasBevandaCorrente()) {
+            return;
+        }
+
+        storicoOrdini.add(creaRiepilogo(bevandaCorrente));
         bevandaCorrente = null;
     }
 
-    public void addObserver(Observer o){
+    private String creaRiepilogo(Bevanda bevanda) {
+        return bevanda.getDescrizione()
+                + " - Totale: "
+                + String.format("%.2f", bevanda.getCosto())
+                + " euro";
+    }
+
+    public void addObserver(Observer o) {
         observer.add(o);
     }
 
