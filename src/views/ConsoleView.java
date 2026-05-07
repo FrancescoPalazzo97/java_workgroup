@@ -11,7 +11,7 @@ public class ConsoleView implements Observer{
     Scanner myFloatSc = new Scanner(System.in);
 
     public void mostraMenu(){
-        System.out.println("---Menu Bevande--- \n1) Lista bevande \n2) Scegli bevanda \n3) Visualizza Storico ordini \n4) Esci");
+        System.out.println("---Menu Bevande--- \n1) Crea nuova bevanda \n2) Aggiungi ingredienti extra \n3) Visualizza bevanda corrente \n4) Conferma ordine \n5)visualizza storico corrente \n6) Esci");
     }
 
     public int scelta(){
