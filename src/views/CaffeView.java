@@ -1,5 +1,5 @@
 package views;
 
-public class CaffeView {
+public class CaffeView extends BevandaView {
 
 }
