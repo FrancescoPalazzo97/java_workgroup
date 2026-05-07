@@ -4,12 +4,12 @@ import controllers.ConsoleController;
 import models.Bevanda;
 import models.Caffe;
 import models.Cioccolata;
-import models.GestoreOrdini;
 import models.Te;
 import models.decorators.CannellaDecorator;
 import models.decorators.LatteDecorator;
 import models.decorators.PannaDecorator;
 import models.decorators.ZuccheroDecorator;
+import models.orders.GestoreOrdini;
 import views.BevandaView;
 import views.ConsoleView;
 
@@ -27,7 +27,7 @@ public class App {
         boolean loop = true;
 
         do {
-            
+
             console.avvia();
             int selezione = myIntSc.nextInt();
             switch (selezione) {
@@ -38,17 +38,17 @@ public class App {
                     switch (bevandaScelta) {
                         // CAFFE
                         case 1:
-                            bevanda = new Caffe("Caffe", 2.00f);
+                            bevanda = new Caffe();
                             GestoreOrdini.getInstance().aggiornaBevandaCorrente(bevanda);
                             break;
                         // CIOCCOLATA
                         case 2:
-                            bevanda = new Cioccolata("Cioccolata", 1.50f);
+                            bevanda = new Cioccolata();
                             GestoreOrdini.getInstance().aggiornaBevandaCorrente(bevanda);
                             break;
                         // TE
                         case 3:
-                            bevanda = new Te("Te", 1.00f);
+                            bevanda = new Te();
                             GestoreOrdini.getInstance().aggiornaBevandaCorrente(bevanda);
                             break;
                         default:
@@ -89,7 +89,7 @@ public class App {
                     }
                     GestoreOrdini.getInstance().aggiornaBevandaCorrente(bCorrente);
                     break;
-                    // VISUALIZZA BEVANDA CORRENTE
+                // VISUALIZZA BEVANDA CORRENTE
                 case 3:
                     System.out.println(GestoreOrdini.getInstance().getBevandaCorrente());
                     break;

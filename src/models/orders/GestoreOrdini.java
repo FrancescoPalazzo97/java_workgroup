@@ -1,10 +1,10 @@
-package models;
+package models.orders;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import observer.Observer;
-import observer.Subject;
+import models.Bevanda;
+import models.observers.Observer;
 
 public class GestoreOrdini implements Subject {
     private static GestoreOrdini instance;
@@ -24,7 +24,6 @@ public class GestoreOrdini implements Subject {
         }
         return instance;
     }
-
 
     public void aggiornaBevandaCorrente(Bevanda bevanda) {
         this.bevandaCorrente = bevanda;
