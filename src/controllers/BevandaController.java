@@ -3,7 +3,7 @@ package controllers;
 import models.Bevanda;
 import views.BevandaView;
 
-public abstract class BevandaController {
+public class BevandaController {
     private Bevanda model;
     private BevandaView view;
 
