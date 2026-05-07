@@ -16,4 +16,10 @@ public abstract class Bevanda {
     public float getCosto() {
         return this.costo;
     }
+
+    @Override
+    public String toString() {
+        return getDescrizione() + " - " + String.format("%.2f", getCosto()) + "€";
+    }
+
 }

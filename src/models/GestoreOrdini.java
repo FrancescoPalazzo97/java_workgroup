@@ -25,10 +25,6 @@ public class GestoreOrdini implements Subject {
         return instance;
     }
 
-    public void creaNuovaBevanda(Bevanda bevanda) {
-        this.bevandaCorrente = bevanda;
-        notifyObserver();
-    }
 
     public void aggiornaBevandaCorrente(Bevanda bevanda) {
         this.bevandaCorrente = bevanda;
