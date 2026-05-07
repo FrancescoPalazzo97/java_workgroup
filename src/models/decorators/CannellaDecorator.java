@@ -6,14 +6,20 @@ import models.strategies.QuantitaIngredienteStrategy;
 public class CannellaDecorator extends IngredienteDecorator {
 
     public CannellaDecorator(Bevanda bevanda) {
-        super("cannella", 0.60f, bevanda);
+        super(bevanda);
     }
 
     public CannellaDecorator(Bevanda bevanda, QuantitaIngredienteStrategy strategy) {
-        super("cannella", 0.60f, bevanda, strategy);
+        super(bevanda, strategy);
     }
 
-    public void aggiungiCannella() {
-        System.out.println(" Cannella aggiunta");
+    @Override
+    protected String getNomeIngrediente() {
+        return "cannella";
+    }
+
+    @Override
+    protected float getCostoIngrediente() {
+        return 0.10f;
     }
 }

@@ -6,15 +6,21 @@ import models.strategies.QuantitaIngredienteStrategy;
 public class LatteDecorator extends IngredienteDecorator {
 
     public LatteDecorator(Bevanda bevanda) {
-        super("latte", 0.50f, bevanda);
+        super(bevanda);
     }
 
     public LatteDecorator(Bevanda bevanda, QuantitaIngredienteStrategy strategy) {
-        super("latte", 0.50f, bevanda, strategy);
+        super(bevanda, strategy);
     }
 
-    public void aggiungiLatte() {
-        System.out.println(" Aggiunto il latte");
+    @Override
+    protected String getNomeIngrediente() {
+        return "latte";
+    }
+
+    @Override
+    protected float getCostoIngrediente() {
+        return 0.30f;
     }
 
 }

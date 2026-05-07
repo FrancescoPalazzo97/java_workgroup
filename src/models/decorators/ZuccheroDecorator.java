@@ -6,14 +6,20 @@ import models.strategies.QuantitaIngredienteStrategy;
 public class ZuccheroDecorator extends IngredienteDecorator {
 
     public ZuccheroDecorator(Bevanda bevanda) {
-        super("zucchero", 0.30f, bevanda);
+        super(bevanda);
     }
 
     public ZuccheroDecorator(Bevanda bevanda, QuantitaIngredienteStrategy strategy) {
-        super("zucchero", 0.30f, bevanda, strategy);
+        super(bevanda, strategy);
     }
 
-    public void aggiungiZucchero() {
-        System.out.println(" Zucchero aggiunto");
+    @Override
+    protected String getNomeIngrediente() {
+        return "latte";
+    }
+
+    @Override
+    protected float getCostoIngrediente() {
+        return 0.30f;
     }
 }

@@ -4,37 +4,35 @@ import models.Bevanda;
 import models.strategies.NormaleStrategy;
 import models.strategies.QuantitaIngredienteStrategy;
 
-public abstract class IngredienteDecorator extends Bevanda {
+public abstract class IngredienteDecorator implements Bevanda {
+    protected String nomeIngrediente;
+    protected float costoIngrediente;
 
     protected Bevanda bevanda;
     protected QuantitaIngredienteStrategy strategy;
 
-    public IngredienteDecorator(String descrizione, float costo, Bevanda bevanda) {
-        super(descrizione, costo);
+    public IngredienteDecorator(Bevanda bevanda) {
         this.bevanda = bevanda;
         this.strategy = new NormaleStrategy();
     }
 
-    public IngredienteDecorator(
-            String descrizione,
-            float costo,
-            Bevanda bevanda,
-            QuantitaIngredienteStrategy strategy) {
-        super(descrizione, costo);
+    public IngredienteDecorator(Bevanda bevanda, QuantitaIngredienteStrategy strategy) {
         this.bevanda = bevanda;
         this.strategy = strategy;
     }
 
     @Override
     public String getDescrizione() {
-        return bevanda.getDescrizione()
-                + " + "
-                + strategy.modificaDescrizione(super.getDescrizione());
+        return bevanda.getDescrizione() + ", "
+                + strategy.modificaDescrizione(getNomeIngrediente());
     }
 
     @Override
     public float getCosto() {
-        return bevanda.getCosto()
-                + strategy.modificaCosto(super.getCosto());
+        return bevanda.getCosto() + strategy.modificaCosto(getCostoIngrediente());
     }
+
+    protected abstract String getNomeIngrediente();
+
+    protected abstract float getCostoIngrediente();
 }

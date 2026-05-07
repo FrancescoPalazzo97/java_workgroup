@@ -6,14 +6,20 @@ import models.strategies.QuantitaIngredienteStrategy;
 public class PannaDecorator extends IngredienteDecorator {
 
     public PannaDecorator(Bevanda bevanda) {
-        super("panna", 0.20f, bevanda);
+        super(bevanda);
     }
 
     public PannaDecorator(Bevanda bevanda, QuantitaIngredienteStrategy strategy) {
-        super("panna", 0.20f, bevanda, strategy);
+        super(bevanda, strategy);
     }
 
-    public void aggiungiPanna() {
-        System.out.println(" Panna aggiunta");
+    @Override
+    protected String getNomeIngrediente() {
+        return "latte";
+    }
+
+    @Override
+    protected float getCostoIngrediente() {
+        return 0.30f;
     }
 }

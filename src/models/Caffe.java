@@ -1,9 +1,17 @@
 package models;
 
-public class Caffe extends Bevanda {
+public class Caffe implements Bevanda {
+    private String descrizione = "Caffè";
+    private float costo = 1.20f;
 
-    public Caffe(String descrizione, float costo) {
-        super(descrizione, costo);
-    } 
+    @Override
+    public String getDescrizione() {
+        return this.descrizione;
+    }
+
+    @Override
+    public float getCosto() {
+        return this.costo;
+    }
 
 }
