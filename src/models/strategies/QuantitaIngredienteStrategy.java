@@ -1,5 +1,7 @@
 package models.strategies;
 
-public class QuantitaIngredienteStrategy {
+public interface QuantitaIngredienteStrategy {
+    String modificaDescrizione(String nomeIngrediente);
 
+    float modificaCosto(float costoBaseIngrediente);
 }
