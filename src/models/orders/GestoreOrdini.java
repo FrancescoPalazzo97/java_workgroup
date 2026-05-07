@@ -11,17 +11,18 @@ public class GestoreOrdini implements Subject {
 
     private Bevanda bevandaCorrente;
     private List<String> storicoOrdini;
-    private List<Observer> observer;
+    private List<Observer> observers;
 
     private GestoreOrdini() {
         storicoOrdini = new ArrayList<>();
-        observer = new ArrayList<>();
+        observers = new ArrayList<>();
     }
 
     public static GestoreOrdini getInstance() {
         if (instance == null) {
             instance = new GestoreOrdini();
         }
+
         return instance;
     }
 
@@ -44,7 +45,7 @@ public class GestoreOrdini implements Subject {
 
     public String getRiepilogoBevandaCorrente() {
         if (!hasBevandaCorrente()) {
-            return "Nessuna bevanda correte!";
+            return "Nessuna bevanda corrente!";
         }
 
         return creaRiepilogo(bevandaCorrente);
@@ -68,17 +69,17 @@ public class GestoreOrdini implements Subject {
     }
 
     public void addObserver(Observer o) {
-        observer.add(o);
+        observers.add(o);
     }
 
     @Override
     public void removeObserver(Observer o) {
-        observer.remove(o);
+        observers.remove(o);
     }
 
     @Override
     public void notifyObserver() {
-        for (Observer o : observer) {
+        for (Observer o : observers) {
             o.update();
         }
     }

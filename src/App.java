@@ -91,7 +91,7 @@ public class App {
                     break;
                 // VISUALIZZA BEVANDA CORRENTE
                 case 3:
-                    System.out.println(GestoreOrdini.getInstance().getBevandaCorrente());
+                    System.out.println(GestoreOrdini.getInstance().getRiepilogoBevandaCorrente());
                     break;
                 case 4:
 
