@@ -1,7 +1,11 @@
 package views;
 
-public abstract class BevandaView {
+public class BevandaView {
     public void printView(String descrizione) {
         System.out.println(descrizione);
     };
+
+    public void mostraBevande(){
+        System.out.println("1) Caffe \n2) Cioccolata \n3) Te");
+    }
 }

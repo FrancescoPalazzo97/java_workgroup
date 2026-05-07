@@ -15,4 +15,9 @@ public abstract class BevandaController {
     public void printView() {
 
     }
+
+    public void selezionaBevanda(int scelta){
+        view.mostraBevande();
+    }
+
 }
