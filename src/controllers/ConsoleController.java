@@ -21,6 +21,7 @@ public class ConsoleController {
             switch (scelta) {
                 //CREA NUOVA BEVANDA
                 case 1:
+                    console.mostraMenu();
                     
                     break;
 
@@ -36,15 +37,6 @@ public class ConsoleController {
                 case 4:
                     System.out.println("Arrivedrci");
                     break;
-                
-                //VISUALIZZA SOTRICO ORDINI
-                case 5:
-                    break;
-
-                //ESCI
-                case 6:
-                    break;
-                
                 default: 
                     System.out.println("Scelta non valida");
             }

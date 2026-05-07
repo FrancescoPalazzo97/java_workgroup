@@ -27,10 +27,12 @@ public class GestoreOrdini implements Subject {
 
     public void creaNuovaBevanda(Bevanda bevanda) {
         this.bevandaCorrente = bevanda;
+        notifyObserver();
     }
 
     public void aggiornaBevandaCorrente(Bevanda bevanda) {
         this.bevandaCorrente = bevanda;
+        notifyObserver();
     }
 
     public Bevanda getBevandaCorrente() {
@@ -60,6 +62,7 @@ public class GestoreOrdini implements Subject {
 
         storicoOrdini.add(creaRiepilogo(bevandaCorrente));
         bevandaCorrente = null;
+        notifyObserver();
     }
 
     private String creaRiepilogo(Bevanda bevanda) {
