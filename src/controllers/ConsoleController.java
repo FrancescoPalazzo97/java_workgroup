@@ -20,7 +20,7 @@ public class ConsoleController {
 
             switch (scelta) {
                 case 1:
-                    console.mostraLista();
+                    console.mostraMenu();
                     break;
                 case 2:
                     break;
@@ -29,7 +29,7 @@ public class ConsoleController {
                 case 4:
                     System.out.println("Arrivedrci");
                     break;
-                default: 
+                default:
                     System.out.println("Scelta non valida");
             }
         } while (scelta != 4);
