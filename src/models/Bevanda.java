@@ -1,6 +1,19 @@
 package models;
 
 public abstract class Bevanda {
-    public void getDescrizione(){System.out.println("DESCRIZIONE BASE");}
-    public void getCosto(){System.out.println("COSTO BEVANDA");}
+    private String descrizione;
+    private float costo;
+
+    public Bevanda(String descrizione, float costo) {
+        this.descrizione = descrizione;
+        this.costo = costo;
+    }
+
+    public String getDescrizione() {
+        return this.descrizione;
+    }
+
+    public float getCosto() {
+        return this.costo;
+    }
 }
