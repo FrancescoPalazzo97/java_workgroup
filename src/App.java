@@ -1,5 +1,11 @@
+import models.GestoreOrdini;
+import views.ConsoleView;
+
 public class App {
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
+
+        ConsoleView console = new ConsoleView();
+        GestoreOrdini.getinstance().addObserver(console);        
+
     }
 }

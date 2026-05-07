@@ -3,13 +3,19 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GestoreOrdini {
+import observer.Observer;
+import observer.Subject;
+
+public class GestoreOrdini implements Subject{
     private static GestoreOrdini instance;
+
     private Bevanda bevandaCorrente;
     private List<String> storicoOrdini;
+    private List<Observer> observer;
 
     private GestoreOrdini() {
         storicoOrdini = new ArrayList<>();
+        observer = new ArrayList<>();
     }
 
     public static GestoreOrdini getinstance() {
@@ -38,6 +44,22 @@ public class GestoreOrdini {
 
         storicoOrdini.add(riepilogo);
         bevandaCorrente = null;
+    }
+
+    public void addObserver(Observer o){
+        observer.add(o);
+    }
+
+    @Override
+    public void removeObserver(Observer o) {
+        observer.remove(o);
+    }
+
+    @Override
+    public void notifyObserver() {
+        for (Observer o : observer) {
+            o.update();
+        }
     }
 
 }
