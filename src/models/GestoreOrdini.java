@@ -18,7 +18,7 @@ public class GestoreOrdini implements Subject {
         observer = new ArrayList<>();
     }
 
-    public static GestoreOrdini getinstance() {
+    public static GestoreOrdini getInstance() {
         if (instance == null) {
             instance = new GestoreOrdini();
         }
