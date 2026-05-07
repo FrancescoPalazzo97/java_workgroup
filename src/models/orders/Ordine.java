@@ -58,11 +58,21 @@ public class Ordine {
             Bevanda bevanda = bevande.get(i);
 
             riepilogo += (i + 1) + " - " + bevanda.getDescrizione() + " - "
-                    + String.format("EURO #.2f", bevanda.getCosto() + "\n");
+                    + String.format("EURO %.2f", bevanda.getCosto()) + "\n";
         }
 
-        riepilogo += "Totale: " + String.format("EURO #.2f", getTotaleOrdine() + "\n");
+        riepilogo += "Totale: " + String.format("EURO %.2f", getTotaleOrdine());
 
         return riepilogo;
     }
+
+    @Override
+    public String toString() {
+        return "{" +
+                " numeroOrdine='" + getNumeroOrdine() + "'" +
+                ", bevande='" + getBevande() + "'" +
+                ", confermato='" + isConfermato() + "'" +
+                "}";
+    }
+
 }

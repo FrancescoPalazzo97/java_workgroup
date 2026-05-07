@@ -15,7 +15,7 @@ public class PannaDecorator extends IngredienteDecorator {
 
     @Override
     protected String getNomeIngrediente() {
-        return "latte";
+        return "panna";
     }
 
     @Override

@@ -15,7 +15,7 @@ public class ZuccheroDecorator extends IngredienteDecorator {
 
     @Override
     protected String getNomeIngrediente() {
-        return "latte";
+        return "Zucchero";
     }
 
     @Override
