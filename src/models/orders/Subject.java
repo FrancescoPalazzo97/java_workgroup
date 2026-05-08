@@ -2,6 +2,9 @@ package models.orders;
 
 import models.observers.Observer;
 
+/**
+ * Interfaccia Subject
+ */
 public interface Subject {
     void addObserver(Observer o);
 

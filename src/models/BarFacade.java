@@ -9,15 +9,30 @@ import models.orders.GestoreOrdini;
 import models.orders.Ordine;
 import models.strategies.QuantitaIngredienteStrategy;
 
+/**
+ * Rappresenta l'interfaccia semplificata con la quale andrà a interagire il
+ * controller
+ */
 public class BarFacade {
     private GestoreOrdini gestoreOrdini;
     private Bevanda bevanda;
 
+    /**
+     * Rappresenta l'interfaccia semplificata con la quale andrà a interagire il
+     * controller
+     */
     public BarFacade() {
         this.gestoreOrdini = GestoreOrdini.getInstance();
         this.gestoreOrdini.addObserver(new LogVendite());
     }
 
+    /**
+     * Metodo che crea la bevanda base in base alla scelta dell'utente
+     * Se esiste già una bevanda in costruzione la aggiunge all'ordine e la resetta
+     * in modo da poter creare una nuova bevanda
+     * 
+     * @param sceltaBevandaBase input numerico dell'utente
+     */
     public void creaBevandaBase(int sceltaBevandaBase) {
         if (bevanda != null) {
             gestoreOrdini.getOrdineCorrente().aggiungiBevanda(bevanda);
@@ -47,6 +62,13 @@ public class BarFacade {
         }
     }
 
+    /**
+     * Metodo che aggiunge il Decorator desiderato alla bevanda corrente
+     * Se non esiste ancora una bevanda in costruzione stampa un messaggio di errore
+     * 
+     * @param sceltaExtra      input numerico dell'utente
+     * @param quantitaStrategy rappresenta la strategy desiderata
+     */
     public void aggiungiExtra(int sceltaExtra, QuantitaIngredienteStrategy quantitaStrategy) {
         if (bevanda == null) {
             System.out.println("Crea prima una bevanda base");
@@ -76,6 +98,11 @@ public class BarFacade {
         }
     }
 
+    /**
+     * Viusializza riepilogo della bevanda corrente se esiste
+     * 
+     * @return stringa con riepilogo della bavanda o messaggio di errore
+     */
     public String visualizzaBevandaCorrente() {
         if (bevanda == null) {
             return "Nessuna bevanda in costruzione.";
@@ -84,11 +111,21 @@ public class BarFacade {
                 + " - " + String.format("Euro %.2f", bevanda.getCosto());
     }
 
+    /**
+     * Metodo per confermare l'ordine
+     * 
+     * @return ordine corrente confermato
+     */
     public Ordine confermaOrdine() {
         finalizzaBevandaInCostruzione();
         return gestoreOrdini.confermaOrdineCorrente();
     }
 
+    /**
+     * Viasulizza lo storico ordini
+     * 
+     * @return stringa che rappresenta lo storico ordini
+     */
     public String visualizzaStoricoOrdini() {
         if (gestoreOrdini.getStoricoOrdini().isEmpty()) {
             return "Nessun ordine nello storico.";
@@ -103,6 +140,10 @@ public class BarFacade {
         return storico;
     }
 
+    /**
+     * Metodo che aggiunge la bevanda in coustruzione all'ordine corrente e la
+     * resetta
+     */
     private void finalizzaBevandaInCostruzione() {
         if (bevanda != null) {
             gestoreOrdini.getOrdineCorrente().aggiungiBevanda(bevanda);

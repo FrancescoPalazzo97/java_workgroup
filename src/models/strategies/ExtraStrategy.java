@@ -1,5 +1,8 @@
 package models.strategies;
 
+/**
+ * Strategy "Extra" la quale modifica descrizione e costo
+ */
 public class ExtraStrategy implements QuantitaIngredienteStrategy {
 
     @Override

@@ -35,6 +35,13 @@ public class GestoreOrdini implements Subject {
         return this.storicoOrdini;
     }
 
+    /**
+     * Metodo che conferma l'ordine in costruzione, lo aggiunge allo storico ordini,
+     * notifica gli observer e inizializza il prossimo ordine con numero
+     * incrementale.
+     * 
+     * @return ordine confermato
+     */
     public Ordine confermaOrdineCorrente() {
         ordineCorrente.conferma();
         storicoOrdini.add(ordineCorrente);

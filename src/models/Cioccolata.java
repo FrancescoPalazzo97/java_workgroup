@@ -1,5 +1,9 @@
 package models;
 
+/**
+ * Rapresenta la bevanda Cioccolata con proprio stato e operazioni basiche per
+ * recuperare quest'ultimo
+ */
 public class Cioccolata implements Bevanda {
 
     private String descrizione = "Cioccolata";

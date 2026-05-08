@@ -5,6 +5,9 @@ import java.util.List;
 
 import models.Bevanda;
 
+/**
+ * Rappresenta l'ordine dell'utente con operazione
+ */
 public class Ordine {
     private int numeroOrdine;
     private List<Bevanda> bevande;
@@ -32,6 +35,10 @@ public class Ordine {
         bevande.add(bevanda);
     }
 
+    /**
+     * Metodo che cambia lo stato da non confermato a confermato solo se ci sono
+     * bevande nell'ordine
+     */
     public void conferma() {
         if (bevande.isEmpty()) {
             return;
@@ -39,6 +46,11 @@ public class Ordine {
         confermato = true;
     }
 
+    /**
+     * Ottieni totale dell'ordine corrente
+     * 
+     * @return totale ordine
+     */
     public float getTotaleOrdine() {
         float totale = 0;
 
@@ -49,6 +61,9 @@ public class Ordine {
         return totale;
     }
 
+    /**
+     * @return stringa che rappresenta lo storico ordini
+     */
     public String getRiepilogoOrdine() {
         String riepilogo;
 

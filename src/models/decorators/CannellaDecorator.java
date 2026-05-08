@@ -3,6 +3,9 @@ package models.decorators;
 import models.Bevanda;
 import models.strategies.QuantitaIngredienteStrategy;
 
+/**
+ * Rappresenta il Decoratore Cannella
+ */
 public class CannellaDecorator extends IngredienteDecorator {
 
     public CannellaDecorator(Bevanda bevanda) {

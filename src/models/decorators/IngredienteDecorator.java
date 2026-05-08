@@ -4,6 +4,10 @@ import models.Bevanda;
 import models.strategies.NormaleStrategy;
 import models.strategies.QuantitaIngredienteStrategy;
 
+/**
+ * Classe astratta che rappresenta l'ingrediente extra da aggiungere alle
+ * bevande tramite pettern design Decorator
+ */
 public abstract class IngredienteDecorator implements Bevanda {
     protected String nomeIngrediente;
     protected float costoIngrediente;

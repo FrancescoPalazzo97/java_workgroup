@@ -1,5 +1,8 @@
 package models.strategies;
 
+/**
+ * Strategy "Normale" la quale non effettua nessuna modifica
+ */
 public class NormaleStrategy implements QuantitaIngredienteStrategy {
 
     @Override
